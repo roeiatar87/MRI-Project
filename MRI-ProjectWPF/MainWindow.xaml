@@ -9,11 +9,10 @@
         Height="819"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF31363B" ResizeMode="NoResize" Closing ="Window_Closing">
 
-    <Canvas Background="#FF002938" Height="795" VerticalAlignment="Top" >
+    <Canvas Background="#FF001822" Height="795" VerticalAlignment="Top" >
         <Label Content="סימולטור MRI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="173" FontSize="22" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FF009DFF" Canvas.Left="-13"/>
         <Image Height="119" Canvas.Left="20" Width="138" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="32" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image x:Name="videoPlayer" Height="367" Width="587" Canvas.Left="219" Canvas.Top="164" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle Height="361" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF262E37" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Height="361" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF002B3C" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="הגדרות מצלמה" Canvas.Left="1070" Canvas.Top="15" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox"
@@ -129,6 +128,10 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+        <Rectangle Height="443" Canvas.Left="320" Canvas.Top="13" Width="639" Fill="#FF002B3C" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Height="38" Canvas.Left="320" Canvas.Top="13" Width="639" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image x:Name="videoPlayer" Height="367" Width="587" Canvas.Left="346" Canvas.Top="66" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="מצלמה" Canvas.Left="883" Canvas.Top="15" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 
 
