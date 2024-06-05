@@ -32,13 +32,13 @@
         <Button Width="106"
                 Height="32"
                 Click="btnStart_Click"
-                Content="הפעל מצלמה" RenderTransformOrigin="0.497,0.552" Foreground="#FFB9F8FF" Background="#FF004A66" FontSize="14" Canvas.Left="1142" Canvas.Top="239" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" FontWeight="Bold" />
+                Content="הפעל מצלמה" RenderTransformOrigin="0.497,0.552" Foreground="#FF36A0C8" Background="{x:Null}" FontSize="14" Canvas.Left="1142" Canvas.Top="239" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#FF36A0C8" FontWeight="Bold" />
         <Button Width="106"
                 Height="32"
                 Click="btnStop_Click"
-                Content="כבה מצלמה" Background="#FF004A66" FontSize="14" Canvas.Left="1014" Canvas.Top="239" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFB9F8FF" FontWeight="Bold" />
+                Content="כבה מצלמה" Background="{x:Null}" FontSize="14" Canvas.Left="1014" Canvas.Top="239" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#FF36A0C8" Foreground="#FF36A0C8" FontWeight="Bold" />
         <Rectangle Height="361" Canvas.Left="988" Canvas.Top="375" Width="285" Fill="#FF262E37" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Rectangle Height="38" Canvas.Left="990" Canvas.Top="374" Width="283" Fill="#FF004A66" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="374" Width="285" Fill="#FF004A66" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <GroupBox Header="זיהוי תנועה" FlowDirection="RightToLeft" Foreground="#FF009DFF" FontSize="18" FontWeight="Bold" Height="228" Canvas.Left="657" Canvas.Top="559" Width="264" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <CheckBox x:Name="cbMotionDetection"
                   Width="118"
