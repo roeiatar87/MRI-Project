@@ -95,7 +95,16 @@
         <Button Width="182"
             Height="43"
             Click="btnSave_Click"
-            Content="שמירת סף רגישות" RenderTransformOrigin="0.5,0.5" Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="1040" Canvas.Top="492" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" />
+            Content="שמירת סף רגישות" RenderTransformOrigin="0.5,0.5" Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="1040" Canvas.Top="484" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+            CornerRadius="18">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <Label Content="סף רגישות :" Foreground="#FF36A0C8" FlowDirection="RightToLeft" FontSize="14" FontWeight="Bold" Canvas.Left="1155" Canvas.Top="411" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Rectangle Height="222" Canvas.Left="988" Canvas.Top="598" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <Button Width="100"
@@ -150,8 +159,26 @@
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <Button Content="הפעל" x:Name="Start_Program" Canvas.Left="834" Canvas.Top="544" Height="38" Width="106"  Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="StartProgram_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" />
-        <Button Content="הפסק" x:Name="Stop_Program" Canvas.Left="716" Canvas.Top="544" Height="38" Width="102" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="Stop_Program_Click" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="#FF002938"/>
+        <Button Content="הפעל" x:Name="Start_Program" Canvas.Left="834" Canvas.Top="544" Height="38" Width="106"  Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="StartProgram_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    CornerRadius="18">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="הפסק" x:Name="Stop_Program" Canvas.Left="714" Canvas.Top="544" Height="38" Width="104" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="Stop_Program_Click" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="#FF002938">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+            CornerRadius="18">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="728" Canvas.Top="723" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="התראת תנועה" Canvas.Left="417" Canvas.Top="527" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Image Height="76" Width="72" Source="/Images/Button_Icon_Red.svg.png" x:Name="pictureBox_Moving" Canvas.Left="441" Canvas.Top="587" HorizontalAlignment="Left" VerticalAlignment="Top"/>
