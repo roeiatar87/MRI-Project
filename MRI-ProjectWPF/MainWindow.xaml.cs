@@ -231,16 +231,25 @@ namespace WpfPostItDetector
 
         private void MediaPlayer_MediaOpened(object sender, EventArgs e)
         {
-            double totalDuration = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            try
+            {
+                double totalDuration = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
 
 
-            audioSlider.Maximum = totalDuration;
+                audioSlider.Maximum = totalDuration;
 
-            // Initialize and start the timer
-            sliderTimer = new DispatcherTimer();
-            sliderTimer.Interval = TimeSpan.FromSeconds(1);
-            sliderTimer.Tick += SliderTimer_Tick;
-            sliderTimer.Start();
+                // Initialize and start the timer
+                sliderTimer = new DispatcherTimer();
+                sliderTimer.Interval = TimeSpan.FromSeconds(1);
+                sliderTimer.Tick += SliderTimer_Tick;
+                sliderTimer.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void SliderTimer_Tick(object sender, EventArgs e)
@@ -330,10 +339,19 @@ namespace WpfPostItDetector
 
         private void thresholdTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(thresholdTextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double threshold))
-                MotionThreshold = threshold < 1 ? 1 : (threshold > 1000 ? 1000 : threshold);
-            else
-                thresholdTextBox.Text = MotionThreshold.ToString("F4", CultureInfo.InvariantCulture);
+            try
+            {
+                if (double.TryParse(thresholdTextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double threshold))
+                    MotionThreshold = threshold < 1 ? 1 : (threshold > 1000 ? 1000 : threshold);
+                else
+                    thresholdTextBox.Text = MotionThreshold.ToString("F4", CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private bool IsNumeric(string input)
@@ -349,13 +367,15 @@ namespace WpfPostItDetector
                     VideoDevices.Add(filterInfo);
 
                 if (VideoDevices.Any())
-                    CurrentDevice = VideoDevices[0];
+                    if (VideoDevices.Count > 1)
+                        CurrentDevice = VideoDevices[gen.DefaultCamera];
+                    else CurrentDevice = VideoDevices[0];
                 else
                     MessageBox.Show("No video sources found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
 
             }
 
@@ -363,72 +383,109 @@ namespace WpfPostItDetector
 
         private async Task StartCameraAsync()
         {
-            await Task.Run(() =>
+            try
             {
-                if (_videoSource == null)
-                    if (CurrentDevice != null)
-                    {
-                        _videoSource = new VideoCaptureDevice(CurrentDevice.MonikerString);
-                        SetCameraResolution(_videoSource, SelectedResolution.FrameSize.Width, SelectedResolution.FrameSize.Height);
-                        _videoSource.NewFrame += video_NewFrame;
-                        _videoSource.Start();
-                    }
-            }).ConfigureAwait(false);
+                await Task.Run(() =>
+                {
+                    if (_videoSource == null)
+                        if (CurrentDevice != null)
+                        {
+                            _videoSource = new VideoCaptureDevice(CurrentDevice.MonikerString);
+                            SetCameraResolution(_videoSource, SelectedResolution.FrameSize.Width, SelectedResolution.FrameSize.Height);
+                            _videoSource.NewFrame += video_NewFrame;
+                            _videoSource.Start();
+                        }
+                }).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void SetCameraResolution(IVideoSource videoSource, int desiredWidth, int desiredHeight)
         {
-            if (videoSource is VideoCaptureDevice captureDevice)
+            try
             {
-                VideoCapabilities[] capabilities = captureDevice.VideoCapabilities;
-                VideoCapabilities desiredResolution = capabilities.OrderByDescending(cap => cap.FrameSize.Width * cap.FrameSize.Height).FirstOrDefault(cap => cap.FrameSize.Width <= desiredWidth && cap.FrameSize.Height <= desiredHeight);
-                if (desiredResolution != null)
+                if (videoSource is VideoCaptureDevice captureDevice)
                 {
-                    captureDevice.VideoResolution = desiredResolution;
-                }
-                else
-                {
-                    MessageBox.Show("Desired resolution not supported. Using default resolution.");
+                    VideoCapabilities[] capabilities = captureDevice.VideoCapabilities;
+                    VideoCapabilities desiredResolution = capabilities.OrderByDescending(cap => cap.FrameSize.Width * cap.FrameSize.Height).FirstOrDefault(cap => cap.FrameSize.Width <= desiredWidth && cap.FrameSize.Height <= desiredHeight);
+                    if (desiredResolution != null)
+                    {
+                        captureDevice.VideoResolution = desiredResolution;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Desired resolution not supported. Using default resolution.");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void GetResolutions(FilterInfo device)
         {
-            if (device != null)
+            try
             {
-                Resolutions.Clear();
-                Resolutions_st.Clear();
-                VideoCaptureDevice videoDevice = new VideoCaptureDevice(device.MonikerString);
-                VideoCapabilities[] capabilities = videoDevice.VideoCapabilities;
-                Array.Sort(capabilities, (x, y) => (y.FrameSize.Width * y.FrameSize.Height).CompareTo(x.FrameSize.Width * x.FrameSize.Height));
-                foreach (VideoCapabilities capability in capabilities)
+                if (device != null)
                 {
-                    if (capability.AverageFrameRate >= 30)
+                    Resolutions.Clear();
+                    Resolutions_st.Clear();
+                    VideoCaptureDevice videoDevice = new VideoCaptureDevice(device.MonikerString);
+                    VideoCapabilities[] capabilities = videoDevice.VideoCapabilities;
+                    Array.Sort(capabilities, (x, y) => (y.FrameSize.Width * y.FrameSize.Height).CompareTo(x.FrameSize.Width * x.FrameSize.Height));
+                    foreach (VideoCapabilities capability in capabilities)
                     {
-                        Resolutions.Add(capability);
-                        Resolutions_st.Add(capability.FrameSize.ToString());
+                        if (capability.AverageFrameRate >= 30)
+                        {
+                            Resolutions.Add(capability);
+                            Resolutions_st.Add(capability.FrameSize.ToString());
+                        }
                     }
+                    if (Resolutions.Any())
+                        SelectedResolution = Resolutions.First();
+                    SelectedRes = 0;
                 }
-                if (Resolutions.Any())
-                    SelectedResolution = Resolutions.First();
-                SelectedRes = 0;
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private async Task StopCameraAsync()
         {
-            if (_videoSource != null && _videoSource.IsRunning)
+            try
             {
-                _videoSource.SignalToStop();
-                _videoSource.NewFrame -= video_NewFrame;
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (_videoSource != null && _videoSource.IsRunning)
                 {
-                    videoPlayer.Source = null;
-                });
-                await Task.Delay(100);
-                _videoSource = null;
+                    _videoSource.SignalToStop();
+                    _videoSource.NewFrame -= video_NewFrame;
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        videoPlayer.Source = null;
+                    });
+                    await Task.Delay(100);
+                    _videoSource = null;
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -452,8 +509,9 @@ namespace WpfPostItDetector
                 int val = int.Parse(MotionThreshold.ToString("F0"));
                 gen.SaveThresholdValue(val);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -475,6 +533,19 @@ namespace WpfPostItDetector
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             await StopCameraAsync();
+        }
+
+        private void btnSaveCamera_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int val = comboBox.SelectedIndex;
+                gen.SaveCameraValue(val);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

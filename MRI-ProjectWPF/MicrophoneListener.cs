@@ -1,9 +1,12 @@
 ﻿using NAudio.Wave;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 public class MicrophoneListener
 {
+    public Thread MicListenerThread;
     private WaveInEvent waveSource;
     private BufferedWaveProvider bufferedWaveProvider;
     private WaveOutEvent waveOut;
@@ -14,7 +17,7 @@ public class MicrophoneListener
     public MicrophoneListener()
     {
         waveSource = new WaveInEvent();
-        waveSource.WaveFormat = new WaveFormat(44100,16, 1); // 44.1 kHz mono
+        waveSource.WaveFormat = new WaveFormat(44100, 16, 1); // 44.1 kHz mono
         waveSource.DataAvailable += WaveSource_DataAvailable;
         bufferedWaveProvider = new BufferedWaveProvider(waveSource.WaveFormat);
         bufferedWaveProvider.BufferDuration = TimeSpan.FromMilliseconds(BufferSizeInMilliseconds);
@@ -23,11 +26,20 @@ public class MicrophoneListener
 
     public void StartListening()
     {
-        waveOut.Init(bufferedWaveProvider); // Initialize WaveOutEvent instance
-        waveSource.StartRecording();
+        try
+        {
+            waveOut.Init(bufferedWaveProvider); // Initialize WaveOutEvent instance
+            waveSource.StartRecording();
+            MicListenerThread = new Thread(() => StartPlayback());
+            MicListenerThread.Name = "MicListenerThread";
+            MicListenerThread.Start();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
 
-        // Start audio playback asynchronously
-        Task.Run(() => StartPlayback());
+
     }
 
     private void StartPlayback()
@@ -37,11 +49,21 @@ public class MicrophoneListener
 
     public void StopListening()
     {
-        bufferedWaveProvider.ClearBuffer();
-        waveSource.StopRecording();
-        waveOut.Stop();
-        waveOut.Dispose();
-       
+        try
+        {
+            bufferedWaveProvider.ClearBuffer();
+            waveSource.StopRecording();
+            waveOut.Stop();
+            waveOut.Dispose();
+            MicListenerThread.Abort();
+        }
+        catch (Exception ex)
+        {
+
+            MessageBox.Show(ex.Message);
+        }
+
+
     }
 
     private void WaveSource_DataAvailable(object sender, WaveInEventArgs e)
@@ -60,16 +82,16 @@ public class MicrophoneListener
             }
             else
             {
-  
+
                 Console.WriteLine("Buffer full. Discarding incoming samples.");
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            MessageBox.Show(ex.Message);
 
-           
         }
 
-     
+
     }
 }
