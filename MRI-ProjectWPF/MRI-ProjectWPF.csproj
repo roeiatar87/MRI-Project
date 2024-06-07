@@ -39,7 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+    <ApplicationIcon>5366912_1280.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -163,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\5431964.png" />
-    <Resource Include="AppIcon.ico" />
+    <Resource Include="5366912_1280.ico" />
     <Content Include="Sound\mrisound.mp3" />
   </ItemGroup>
   <ItemGroup>
