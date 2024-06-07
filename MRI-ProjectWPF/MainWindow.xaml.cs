@@ -10,6 +10,7 @@ using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,6 +23,7 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using AForge.Vision.Motion;
 using WpfPostItDetector.GENERAL;
+using static System.Net.Mime.MediaTypeNames;
 using Color = System.Drawing.Color;
 
 namespace WpfPostItDetector
@@ -36,6 +38,7 @@ namespace WpfPostItDetector
             _motionDetector = new MotionDetector(new TwoFramesDifferenceDetector(), new MotionBorderHighlighting());
             GetVideoDevices();
             MotionThreshold = gen.Threshold_defVal;
+            ThresholdMotionTime = gen.ThresholdMotionTime;
             pictureBox_NotMoving.Visibility = Visibility.Hidden;
             pictureBox_Moving.Visibility = Visibility.Hidden;
             mediaPlayer = new MediaPlayer();
@@ -89,6 +92,20 @@ namespace WpfPostItDetector
                 OnPropertyChanged(nameof(MotionThreshold));
             }
         }
+
+
+        public double ThresholdMotionTime
+        {
+            get => _thresholdMotionTime;
+            set
+            {
+                _thresholdMotionTime = value;
+                OnPropertyChanged(nameof(ThresholdMotionTime));
+            }
+        }
+        private double _thresholdMotionTime = 0.1;
+
+
         public FilterInfo CurrentDevice
         {
             get => _currentDevice;
@@ -359,6 +376,11 @@ namespace WpfPostItDetector
             return input.All(char.IsDigit) || input.Count(c => c == '.') <= 1;
         }
 
+        private bool IsNumeric1(string text)
+        {
+            return double.TryParse(text, out _);
+        }
+
         private void GetVideoDevices()
         {
             try
@@ -546,6 +568,16 @@ namespace WpfPostItDetector
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void thresholdMotionTime_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsNumeric1(e.Text) && (e.Text != "." || ((TextBox)sender).Text.Contains("."));
+        }
+
+        private void thresholdMotionTime_TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

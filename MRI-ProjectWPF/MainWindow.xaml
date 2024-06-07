@@ -227,7 +227,7 @@
         <Rectangle Height="321" Canvas.Left="320" Canvas.Top="499" Width="639" Fill="#FF002938" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="320" Canvas.Top="473" Width="639" Fill="#FF004A66" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Content="הפעלת תוכנית" Canvas.Left="821" Canvas.Top="475" Foreground="#FFB9F8FF" FontSize="20" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
-        <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="730" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
+        <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="734" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
         <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="661" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
         <CheckBox Content=" הפעל מיקרופון" IsChecked="{Binding IsMicrophoneEnabled, Mode=TwoWay}" Canvas.Left="784" Canvas.Top="622" Foreground="#FF36A0C8" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
             <CheckBox.LayoutTransform>
@@ -266,7 +266,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="728" Canvas.Top="723" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="734" Canvas.Top="723" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
         <Label Content="התראת תנועה" Canvas.Left="417" Canvas.Top="527" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
         <Image Height="76" Width="72" Source="/Images/Button_Icon_Red.svg.png" x:Name="pictureBox_Moving" Canvas.Left="441" Canvas.Top="587" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="76" Width="73" Source="/Images/Button_Icon_Green.svg.png" x:Name="pictureBox_NotMoving" Canvas.Left="441" Canvas.Top="586" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -341,7 +341,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="סף זמן תנועה :" x:Name="labelShiftDuration_val" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="728" Canvas.Top="766" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="סף זמן תנועה :" x:Name="labelShiftDuration_val" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="734" Canvas.Top="768" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Rectangle Height="1" Canvas.Left="714" Stroke="#FF004A66" Canvas.Top="758" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
@@ -352,6 +352,30 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+        <TextBox x:Name="thresholdMotionTime_TextBox"
+            Width="147"
+            Height="32"
+            Text="{Binding ThresholdMotionTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            PreviewTextInput="thresholdMotionTime_TextBox_PreviewTextInput" 
+            LostFocus="thresholdMotionTime_TextBox_LostFocus" FontSize="18" Canvas.Left="661" Canvas.Top="770" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Button Width="117"
+            Height="36"
+            Click="btnSave_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="523" Canvas.Top="768" BorderBrush="{x:Null}" Content="שמירה" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                        CornerRadius="18"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#D5FFFA"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Canvas>
 
 
