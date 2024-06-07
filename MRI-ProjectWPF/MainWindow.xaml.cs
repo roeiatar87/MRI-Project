@@ -179,10 +179,10 @@ namespace WpfPostItDetector
             }
         }
         private TimeSpan _remainingTime;
-      
+
         private async void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            
+
         }
 
         private async void btnStart_Click(object sender, RoutedEventArgs e)
@@ -216,7 +216,7 @@ namespace WpfPostItDetector
 
                     // Play the audio
                     mediaPlayer.Play();
-                    
+
                 }
                 else
                 {
@@ -233,12 +233,12 @@ namespace WpfPostItDetector
         {
             double totalDuration = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
 
-            
+
             audioSlider.Maximum = totalDuration;
 
             // Initialize and start the timer
             sliderTimer = new DispatcherTimer();
-            sliderTimer.Interval = TimeSpan.FromSeconds(1); 
+            sliderTimer.Interval = TimeSpan.FromSeconds(1);
             sliderTimer.Tick += SliderTimer_Tick;
             sliderTimer.Start();
         }
@@ -247,7 +247,7 @@ namespace WpfPostItDetector
         {
             RemainingTime = mediaPlayer.NaturalDuration.TimeSpan - mediaPlayer.Position;
             audioSlider.Value = mediaPlayer.Position.TotalSeconds;
-    
+
         }
 
         private void MediaPlayer_MediaEnded(object sender, EventArgs e)
@@ -256,7 +256,7 @@ namespace WpfPostItDetector
             audioSlider.Value = 0;
             mediaPlayer.Stop();
         }
-        
+
         private void audioSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (mediaPlayer != null)
@@ -343,13 +343,22 @@ namespace WpfPostItDetector
 
         private void GetVideoDevices()
         {
-            foreach (FilterInfo filterInfo in new FilterInfoCollection(FilterCategory.VideoInputDevice))
-                VideoDevices.Add(filterInfo);
+            try
+            {
+                foreach (FilterInfo filterInfo in new FilterInfoCollection(FilterCategory.VideoInputDevice))
+                    VideoDevices.Add(filterInfo);
 
-            if (VideoDevices.Any())
-                CurrentDevice = VideoDevices[0];
-            else
-                MessageBox.Show("No video sources found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (VideoDevices.Any())
+                    CurrentDevice = VideoDevices[0];
+                else
+                    MessageBox.Show("No video sources found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
         }
 
         private async Task StartCameraAsync()
@@ -458,7 +467,7 @@ namespace WpfPostItDetector
 
         private void Stop_Program_Click(object sender, RoutedEventArgs e)
         {
-           btnStop_Click(sender, e);
+            btnStop_Click(sender, e);
             btnStopSound_Click(sender, e);
             MotionDetectionEnabled = false;
         }

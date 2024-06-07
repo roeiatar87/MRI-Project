@@ -10,6 +10,16 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF001822" ResizeMode="NoResize" Closing ="Window_Closing">
 
     <Canvas Background="#FF001319" Height="869" VerticalAlignment="Top" >
+        <Ellipse Height="275" Canvas.Left="-55" Canvas.Top="679" Width="284" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.161"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
         <Ellipse Height="462" Canvas.Left="25" Canvas.Top="34" Width="457" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Ellipse.RenderTransform>
                 <TransformGroup>
@@ -20,7 +30,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="462" Canvas.Left="820" Canvas.Top="28" Width="457" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        <Ellipse Height="400" Canvas.Left="820" Canvas.Top="28" Width="413" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,7 +40,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="438" Canvas.Left="896" Canvas.Top="467" Width="443" Fill="#FF00AEB6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Ellipse Height="488" Canvas.Left="882" Canvas.Top="456" Width="481" Fill="#FF00AEB6" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Ellipse Height="274" Canvas.Left="-66" Canvas.Top="-77" Width="281" Fill="#FF00AEB6"/>
         <Rectangle Height="278" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
@@ -53,7 +63,7 @@
                 Click="btnStart_Click"
                 Content="הפעל מצלמה" RenderTransformOrigin="0.497,0.552" Foreground="#FF001822" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1141" Canvas.Top="244" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="{x:Null}" FontFamily="Arial" >
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
                 CornerRadius="18"
                 Background="{TemplateBinding Background}">
@@ -72,7 +82,7 @@
                 Click="btnStop_Click"
                 Content="כבה מצלמה" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1022" Canvas.Top="244" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
                 CornerRadius="18"
                 Background="{TemplateBinding Background}">
@@ -126,7 +136,7 @@
             Height="35"
             Click="btnSave_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="1040" Canvas.Top="492" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}" Content="שמירת סף רגישות" Foreground="#FF002938" FontFamily="Arial" >
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
                 CornerRadius="18"
                 Background="{TemplateBinding Background}">
@@ -147,7 +157,7 @@
         Content="נגן"
         Click="btnPlaySound_Click" Canvas.Left="1129" Canvas.Top="716" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
           CornerRadius="18"
           Background="{TemplateBinding Background}">
@@ -166,7 +176,7 @@
         Content="עצור"
         Click="btnStopSound_Click" Canvas.Left="1128" Canvas.Top="764" Foreground="#FF001822" Background="#FF6EC7CC" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial">
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
           CornerRadius="18"
           Background="{TemplateBinding Background}">
@@ -226,7 +236,7 @@
         </CheckBox>
         <Button Content="הפעל" x:Name="Start_Program" Canvas.Left="834" Canvas.Top="544" Height="38" Width="106"  Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="StartProgram_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}"  >
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
                     CornerRadius="18"
                     Background="{TemplateBinding Background}">
@@ -242,7 +252,7 @@
         </Button>
         <Button Content="הפסק" x:Name="Stop_Program" Canvas.Left="714" Canvas.Top="544" Height="38" Width="104" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="Stop_Program_Click" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="#FF002938">
             <Button.Template>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
                 CornerRadius="18"
                 Background="{TemplateBinding Background}">

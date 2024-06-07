@@ -13,6 +13,7 @@ namespace WpfPostItDetector.GENERAL
         public static IniFileReader iniFile;
         string filePath = @"C:\MRI-INI\MRI_INIFILE.ini";
         public int Threshold_defVal = 0;
+        public int DefaוltCamera = 0;
 
         public General()
         {
@@ -24,16 +25,18 @@ namespace WpfPostItDetector.GENERAL
         {
             try
             {
-                Threshold_defVal =int.Parse(iniFile.GetValue("Camera_Params", "Threshold_defVal"));
-              
+                Threshold_defVal = int.Parse(iniFile.GetValue("Camera_Params", "Threshold_defVal"));
+                DefaוltCamera = int.Parse(iniFile.GetValue("Camera_Params", " DefaוltCamera"));
+
+
 
             }
-            catch (Exception )
+            catch (Exception)
             {
-                
+
 
             }
-          
+
         }
 
 
@@ -47,9 +50,9 @@ namespace WpfPostItDetector.GENERAL
             catch (Exception)
             {
 
-             
+
             }
-           
+
         }
 
     }
