@@ -23,7 +23,6 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using AForge.Vision.Motion;
 using WpfPostItDetector.GENERAL;
-using static System.Net.Mime.MediaTypeNames;
 using Color = System.Drawing.Color;
 
 namespace WpfPostItDetector
@@ -376,10 +375,6 @@ namespace WpfPostItDetector
             return input.All(char.IsDigit) || input.Count(c => c == '.') <= 1;
         }
 
-        private bool IsNumeric1(string text)
-        {
-            return double.TryParse(text, out _);
-        }
 
         private void GetVideoDevices()
         {
@@ -572,12 +567,8 @@ namespace WpfPostItDetector
 
         private void thresholdMotionTime_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsNumeric1(e.Text) && (e.Text != "." || ((TextBox)sender).Text.Contains("."));
-        }
-
-        private void thresholdMotionTime_TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
 
         }
+
     }
 }

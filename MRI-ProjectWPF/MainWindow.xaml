@@ -357,7 +357,7 @@
             Height="32"
             Text="{Binding ThresholdMotionTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
             PreviewTextInput="thresholdMotionTime_TextBox_PreviewTextInput" 
-            LostFocus="thresholdMotionTime_TextBox_LostFocus" FontSize="18" Canvas.Left="661" Canvas.Top="770" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            FontSize="18" Canvas.Left="661" Canvas.Top="770" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <Button Width="117"
             Height="36"
             Click="btnSave_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="523" Canvas.Top="768" BorderBrush="{x:Null}" Content="שמירה" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center" >
