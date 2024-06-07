@@ -10,7 +10,7 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF001822" ResizeMode="NoResize" Closing ="Window_Closing">
 
     <Canvas Background="#FF001319" Height="869" VerticalAlignment="Top" >
-        <Ellipse Height="616" Canvas.Left="693" Canvas.Top="-126" Width="625" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <Ellipse Height="462" Canvas.Left="25" Canvas.Top="34" Width="457" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -20,11 +20,21 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="688" Canvas.Left="650" Canvas.Top="322" Width="701" Fill="#FF00AEB6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Ellipse Height="649" Canvas.Left="-83" Canvas.Top="-122" Width="653" Fill="#FF00AEB6"/>
+        <Ellipse Height="462" Canvas.Left="820" Canvas.Top="28" Width="457" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.161"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Ellipse Height="438" Canvas.Left="896" Canvas.Top="467" Width="443" Fill="#FF00AEB6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Ellipse Height="274" Canvas.Left="-66" Canvas.Top="-77" Width="281" Fill="#FF00AEB6"/>
         <Rectangle Height="278" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="הגדרות מצלמה" Canvas.Left="1143" Canvas.Top="15" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="הגדרות מצלמה" Canvas.Left="1134" Canvas.Top="13" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox"
                   Width="234"
                   Height="32"
@@ -127,12 +137,12 @@
         ValueChanged="audioSlider_ValueChanged" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="{Binding RemainingTimeFormatted}" Width="100" Height="30" Canvas.Left="1129" Canvas.Top="648" Foreground="#FF36A0C8" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="314" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="זיהוי תנועה" Canvas.Left="1175" Canvas.Top="317" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="זיהוי תנועה" Canvas.Left="1166" Canvas.Top="314" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="572" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="נגן סאונד MRI" Canvas.Left="1155" Canvas.Top="572" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
+        <Label Content="נגן סאונד MRI" Canvas.Left="1146" Canvas.Top="572" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="RightToLeft"/>
         <Rectangle Height="321" Canvas.Left="320" Canvas.Top="499" Width="639" Fill="#FF002938" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="320" Canvas.Top="473" Width="639" Fill="#FF004A66" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label Content="הפעלת תוכנית" Canvas.Left="834" Canvas.Top="475" Foreground="#FFB9F8FF" FontSize="18" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="הפעלת תוכנית" Canvas.Left="821" Canvas.Top="475" Foreground="#FFB9F8FF" FontSize="18" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="721" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FF36A0C8" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="661" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <CheckBox Content="הפעל מיקרופון" IsChecked="{Binding IsMicrophoneEnabled, Mode=TwoWay}" Canvas.Left="781" Canvas.Top="611" Foreground="#FF36A0C8" FontWeight="Bold" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -146,8 +156,8 @@
         <Label Content="התראה" Canvas.Left="443" Canvas.Top="527" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="76" Width="72" Source="/Images/Button_Icon_Red.svg.png" x:Name="pictureBox_Moving" Canvas.Left="441" Canvas.Top="587" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="76" Width="73" Source="/Images/Button_Icon_Green.svg.png" x:Name="pictureBox_NotMoving" Canvas.Left="441" Canvas.Top="586" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Content="סימולטור MRI" HorizontalAlignment="Left" VerticalAlignment="Center" Width="173" FontSize="22" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FF2C9FC8" Canvas.Left="13" Canvas.Top="709"/>
-        <Image Height="119" Canvas.Left="30" Width="139" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="730" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Height="272" Canvas.Left="10" Width="245" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="609" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="סימולטור MRI" HorizontalAlignment="Center" VerticalAlignment="Top" Width="266" FontSize="30" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FF2C9FC8" Canvas.Top="622"/>
     </Canvas>
 
 
