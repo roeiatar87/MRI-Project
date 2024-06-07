@@ -136,7 +136,7 @@
         Canvas.Top="624"
         ValueChanged="audioSlider_ValueChanged" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="{Binding RemainingTimeFormatted}" Width="100" Height="30" Canvas.Left="1129" Canvas.Top="648" Foreground="#FF36A0C8" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="314" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="314" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Center" RadiusX="7.373" RadiusY="7.373"/>
         <Label Content="זיהוי תנועה" Canvas.Left="1166" Canvas.Top="314" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Height="38" Canvas.Left="988" Canvas.Top="572" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <Label Content="נגן סאונד MRI" Canvas.Left="1146" Canvas.Top="572" Foreground="#FFB9F8FF" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" FlowDirection="RightToLeft"/>
