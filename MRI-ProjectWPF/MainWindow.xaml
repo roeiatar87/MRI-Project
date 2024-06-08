@@ -377,7 +377,24 @@
          Text="{Binding ThresholdMotionTime, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
          Canvas.Left="698" TextWrapping="Wrap" Canvas.Top="769" Width="105"
          HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" FontSize="18"/>
-
+        <Button Width="117"
+            Height="36"
+            Click="btnAbout_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold"  BorderBrush="{x:Null}" Content="אודות" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="116" Canvas.Top="563" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                        CornerRadius="18"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#D5FFFA"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Canvas>
 
 

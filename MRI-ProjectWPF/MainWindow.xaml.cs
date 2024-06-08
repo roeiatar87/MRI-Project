@@ -634,5 +634,12 @@ namespace WpfPostItDetector
             }
 
         }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show("© התוכנה פותחה ועוצבה על ידי רועי עטר, כל הזכויות שמורות.\n", "אודות");
+
+        }
     }
 }
