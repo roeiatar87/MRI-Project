@@ -501,20 +501,26 @@ namespace WpfPostItDetector
                 {
                     _videoSource.SignalToStop();
                     _videoSource.NewFrame -= video_NewFrame;
+
+                    // Wait for a short delay before releasing resources
+                    await Task.Delay(100);
+
+                    // Dispose the video source
+                    _videoSource.Stop();
+                    _videoSource.WaitForStop();
+                    _videoSource = null;
+
+                    // Clear the video player source
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
                         videoPlayer.Source = null;
                     });
-                    await Task.Delay(100);
-                    _videoSource = null;
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
