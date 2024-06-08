@@ -93,8 +93,6 @@ namespace WpfPostItDetector
                 OnPropertyChanged(nameof(MotionThreshold));
             }
         }
-
-
         private double _thresholdMotionTime;
         public double ThresholdMotionTime
         {
@@ -107,8 +105,6 @@ namespace WpfPostItDetector
 
             }
         }
-
-
         public FilterInfo CurrentDevice
         {
             get => _currentDevice;
@@ -200,11 +196,6 @@ namespace WpfPostItDetector
         }
         private TimeSpan _remainingTime;
 
-        private async void MainWindow_Closing(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private async void btnStart_Click(object sender, RoutedEventArgs e)
         {
             await StartCameraAsync();
@@ -224,8 +215,6 @@ namespace WpfPostItDetector
 
                 // Combine the base directory with the relative path to the sound file
                 string audioFilePath = Path.Combine(baseDirectory, "..", "..", "Sound", "mrisound.mp3");
-
-                // Check if the file exists
                 if (File.Exists(audioFilePath))
                 {
                     // Set the media player's media source to the audio file path
@@ -552,19 +541,37 @@ namespace WpfPostItDetector
 
         private void StartProgram_Click(object sender, RoutedEventArgs e)
         {
-            btnStart_Click(sender, e);
-            btnPlaySound_Click(sender, e);
-            MotionDetectionEnabled = true;
-            MotionNumber = 0;
+            try
+            {
+                btnStart_Click(sender, e);
+                btnPlaySound_Click(sender, e);
+                MotionDetectionEnabled = true;
+                MotionNumber = 0;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"{ex.Message}");
+            }
+
         }
 
         private void Stop_Program_Click(object sender, RoutedEventArgs e)
         {
-            btnStop_Click(sender, e);
-            btnStopSound_Click(sender, e);
-            MotionDetectionEnabled = false;
-            pictureBox_NotMoving.Visibility = Visibility.Hidden;
-            pictureBox_Moving.Visibility = Visibility.Hidden;
+            try
+            {
+                btnStop_Click(sender, e);
+                btnStopSound_Click(sender, e);
+                MotionDetectionEnabled = false;
+                pictureBox_NotMoving.Visibility = Visibility.Hidden;
+                pictureBox_Moving.Visibility = Visibility.Hidden;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}");
+
+            }
+
         }
 
         private async void Window_Closing(object sender, CancelEventArgs e)
@@ -609,14 +616,23 @@ namespace WpfPostItDetector
 
         private void thresholdMotionTime_TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(thresholdMotionTime_TextBox.Text, out double result))
+            try
             {
-                ThresholdMotionTime = result;
+                if (double.TryParse(thresholdMotionTime_TextBox.Text, out double result))
+                {
+                    ThresholdMotionTime = result;
+                }
+                else
+                {
+                    thresholdMotionTime_TextBox.Text = ThresholdMotionTime.ToString(CultureInfo.InvariantCulture);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                thresholdMotionTime_TextBox.Text = ThresholdMotionTime.ToString(CultureInfo.InvariantCulture);
+                MessageBox.Show($"{ex.Message}");
+
             }
+
         }
     }
 }
