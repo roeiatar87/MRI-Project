@@ -563,6 +563,8 @@ namespace WpfPostItDetector
             btnStop_Click(sender, e);
             btnStopSound_Click(sender, e);
             MotionDetectionEnabled = false;
+            pictureBox_NotMoving.Visibility = Visibility.Hidden;
+            pictureBox_Moving.Visibility = Visibility.Hidden;
         }
 
         private async void Window_Closing(object sender, CancelEventArgs e)
