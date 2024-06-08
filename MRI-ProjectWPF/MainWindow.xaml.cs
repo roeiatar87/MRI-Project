@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,6 +53,7 @@ namespace WpfPostItDetector
         public ObservableCollection<VideoCapabilities> Resolutions { get; } = new ObservableCollection<VideoCapabilities>();
         public ObservableCollection<string> Resolutions_st { get; } = new ObservableCollection<string>();
         public General gen;
+        private bool _isInMotion = false; // Track if currently in motion
         public bool MotionDetectionEnabled
         {
             get => _motionDetectionEnabled;
@@ -93,16 +95,18 @@ namespace WpfPostItDetector
         }
 
 
+        private double _thresholdMotionTime;
         public double ThresholdMotionTime
         {
             get => _thresholdMotionTime;
             set
             {
+
                 _thresholdMotionTime = value;
                 OnPropertyChanged(nameof(ThresholdMotionTime));
+
             }
         }
-        private double _thresholdMotionTime = 0.1;
 
 
         public FilterInfo CurrentDevice
@@ -312,17 +316,24 @@ namespace WpfPostItDetector
                                 pictureBox_Moving.Visibility = Visibility.Visible;
                                 TimeSpan displacementDuration = DateTime.Now - _shiftStartTime;
                                 labelShiftDuration.Content = $"זמן תנועה: {displacementDuration.TotalSeconds:F4} שניות";
-                                if (displacementDuration.TotalSeconds > 0.1)
-                                {
-                                    MotionNumber++;
-                                }
 
+                                // Check if motion duration exceeds the threshold
+                                if (displacementDuration.TotalSeconds > ThresholdMotionTime)
+                                {
+                                    // Only increment MotionNumber if it was not already counted for this motion
+                                    if (!_isInMotion)
+                                    {
+                                        MotionNumber++;
+                                        _isInMotion = true;
+                                    }
+                                }
                             }
                             else
                             {
                                 pictureBox_NotMoving.Visibility = Visibility.Visible;
                                 pictureBox_Moving.Visibility = Visibility.Hidden;
                                 _shiftStartTime = DateTime.Now;
+                                _isInMotion = false; // Reset motion state
                             }
                         });
                     }
@@ -347,6 +358,7 @@ namespace WpfPostItDetector
                 await StopCameraAsync();
             }
         }
+
 
         private void thresholdTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -567,8 +579,36 @@ namespace WpfPostItDetector
 
         private void thresholdMotionTime_TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
+            e.Handled = !IsTextAllowed(thresholdMotionTime_TextBox.Text, e.Text);
+        }
+        private static bool IsTextAllowed(string currentText, string newText)
+        {
+            var fullText = currentText + newText;
+            return Regex.IsMatch(fullText, @"^\d*\.?\d*$");
+        }
+        private void btnSaveTime_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                double val = double.Parse(ThresholdMotionTime.ToString());
+                gen.SaveMotionTimeValue(val);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        private void thresholdMotionTime_TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(thresholdMotionTime_TextBox.Text, out double result))
+            {
+                ThresholdMotionTime = result;
+            }
+            else
+            {
+                thresholdMotionTime_TextBox.Text = ThresholdMotionTime.ToString(CultureInfo.InvariantCulture);
+            }
+        }
     }
 }

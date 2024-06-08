@@ -70,7 +70,7 @@ namespace WpfPostItDetector.GENERAL
             }
 
         }
-        public void SaveCameraValue(double newValue)
+        public void SaveMotionTimeValue(double newValue)
         {
             try
             {
@@ -84,5 +84,7 @@ namespace WpfPostItDetector.GENERAL
             }
 
         }
+
+
     }
 }
