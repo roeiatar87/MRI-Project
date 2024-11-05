@@ -214,7 +214,8 @@ namespace WpfPostItDetector
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
                 // Combine the base directory with the relative path to the sound file
-                string audioFilePath = Path.Combine(baseDirectory, "..", "..", "Sound", "mrisound.mp3");
+                string audioFilePath = Path.Combine(baseDirectory, "mrisound.mp3");
+
                 if (File.Exists(audioFilePath))
                 {
                     // Set the media player's media source to the audio file path

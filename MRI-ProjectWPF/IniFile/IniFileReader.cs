@@ -1,64 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WpfPostItDetector.IniFile
 {
     public class IniFileReader
     {
         private string _filePath;
-
         private readonly Dictionary<string, Dictionary<string, string>> _sections;
 
+        // Constructor for file path
         public IniFileReader(string filePath)
         {
             _filePath = filePath;
             _sections = new Dictionary<string, Dictionary<string, string>>();
-            LoadIniFile();
+            LoadIniFileFromPath();
         }
 
-
-        private void LoadIniFile()
+        // Constructor for stream (e.g., embedded resource)
+        public IniFileReader(Stream iniStream)
         {
-            try
+            _sections = new Dictionary<string, Dictionary<string, string>>();
+            LoadIniFileFromStream(iniStream);
+        }
+
+        // Load INI file from file path
+        private void LoadIniFileFromPath()
+        {
+            if (!File.Exists(_filePath))
+                throw new FileNotFoundException("INI file not found", _filePath);
+
+            LoadIniFile(File.ReadLines(_filePath));
+        }
+
+        // Load INI file from a Stream
+        private void LoadIniFileFromStream(Stream iniStream)
+        {
+            using (StreamReader reader = new StreamReader(iniStream))
             {
-                if (!File.Exists(_filePath))
+                LoadIniFile(reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.None));
+            }
+        }
+
+        // Core loading logic for any IEnumerable<string> (file lines or stream)
+        private void LoadIniFile(IEnumerable<string> lines)
+        {
+            string currentSection = "";
+
+            foreach (string line in lines)
+            {
+                string trimmedLine = line.Trim();
+
+                if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
                 {
-                    throw new FileNotFoundException("INI file not found", _filePath);
+                    currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
+                    _sections[currentSection] = new Dictionary<string, string>();
                 }
-
-                string currentSection = "";
-
-                foreach (string line in File.ReadLines(_filePath))
+                else if (!string.IsNullOrEmpty(trimmedLine) && !trimmedLine.StartsWith(";"))
                 {
-                    string trimmedLine = line.Trim();
-
-                    if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
+                    int index = trimmedLine.IndexOf('=');
+                    if (index != -1)
                     {
-                        currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
-                        _sections[currentSection] = new Dictionary<string, string>();
-                    }
-                    else if (!string.IsNullOrEmpty(trimmedLine) && !trimmedLine.StartsWith(";"))
-                    {
-                        int index = trimmedLine.IndexOf('=');
-                        if (index != -1)
-                        {
-                            string key = trimmedLine.Substring(0, index).Trim();
-                            string value = trimmedLine.Substring(index + 1).Trim();
-                            _sections[currentSection][key] = value;
-                        }
+                        string key = trimmedLine.Substring(0, index).Trim();
+                        string value = trimmedLine.Substring(index + 1).Trim();
+                        _sections[currentSection][key] = value;
                     }
                 }
             }
-            catch (Exception )
-            {
-
-                
-            }
-          
         }
 
         public string GetValue(string section, string key)
@@ -75,21 +83,25 @@ namespace WpfPostItDetector.IniFile
             return _sections.ContainsKey(section) ? _sections[section] : null;
         }
 
-
         public void WriteValue(string section, string key, string value)
         {
+            if (string.IsNullOrEmpty(_filePath))
+                throw new InvalidOperationException("Write operation not supported for INI loaded from stream.");
+
             if (!_sections.ContainsKey(section))
             {
                 _sections[section] = new Dictionary<string, string>();
             }
 
             _sections[section][key] = value;
-
             WriteToFile();
         }
 
         private void WriteToFile()
         {
+            if (string.IsNullOrEmpty(_filePath))
+                throw new InvalidOperationException("File path is not set for writing.");
+
             using (StreamWriter writer = new StreamWriter(_filePath))
             {
                 foreach (var section in _sections)
@@ -105,6 +117,5 @@ namespace WpfPostItDetector.IniFile
                 }
             }
         }
-
     }
 }
