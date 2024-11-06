@@ -49,6 +49,8 @@ namespace WpfPostItDetector
         private MicrophoneListener microphoneListener;
         private DispatcherTimer sliderTimer;
         private MediaPlayer mediaPlayer;
+
+
         public ObservableCollection<FilterInfo> VideoDevices { get; } = new ObservableCollection<FilterInfo>();
         public ObservableCollection<VideoCapabilities> Resolutions { get; } = new ObservableCollection<VideoCapabilities>();
         public ObservableCollection<string> Resolutions_st { get; } = new ObservableCollection<string>();

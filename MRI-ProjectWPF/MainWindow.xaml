@@ -5,11 +5,11 @@
         xmlns:local="clr-namespace:WpfPostItDetector"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow"
-        Width="1299"
+        Width="1676"
         Height="884"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF001822" ResizeMode="NoResize" Closing ="Window_Closing">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF001319" Closing ="Window_Closing">
 
-    <Canvas Background="#FF001319" Height="869" VerticalAlignment="Top" >
+    <Canvas Background="#FF001319" Height="869" VerticalAlignment="Center" Margin="2,0,-2,0" >
         <Ellipse Height="275" Canvas.Left="-55" Canvas.Top="679" Width="284" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Ellipse.RenderTransform>
                 <TransformGroup>
@@ -20,7 +20,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="462" Canvas.Left="25" Canvas.Top="34" Width="457" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Ellipse Height="462" Canvas.Left="165" Canvas.Top="48" Width="457" Fill="#FF001822" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,7 +30,7 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="400" Canvas.Left="820" Canvas.Top="28" Width="413" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <Ellipse Height="400" Canvas.Left="960" Canvas.Top="42" Width="413" Fill="#FF001822" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,28 +40,28 @@
                 </TransformGroup>
             </Ellipse.RenderTransform>
         </Ellipse>
-        <Ellipse Height="329" Canvas.Left="1031" Canvas.Top="586" Width="342" Fill="#FF00AEB6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Ellipse Height="329" Canvas.Left="1224" Canvas.Top="530" Width="342" Fill="#FF00AEB6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Ellipse Height="274" Canvas.Left="-66" Canvas.Top="-77" Width="281" Fill="#FF00AEB6"/>
-        <Rectangle Height="278" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="13" Width="285" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="הגדרות מצלמה" Canvas.Left="1134" Canvas.Top="13" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Rectangle Height="278" Canvas.Left="1128" Canvas.Top="27" Width="285" Fill="#FF002938" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Rectangle Height="38" Canvas.Left="1128" Canvas.Top="27" Width="285" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Label Content="הגדרות מצלמה" Canvas.Left="1274" Canvas.Top="27" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
         <ComboBox x:Name="comboBox"
                   Width="234"
                   Height="32"
                   DisplayMemberPath="Name"
                   ItemsSource="{Binding VideoDevices}"
-                  SelectedItem="{Binding CurrentDevice}" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" Canvas.Left="1014" Canvas.Top="85" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <ComboBox Width="234" Height="34" x:Name="resolution" VerticalContentAlignment="Center" ItemsSource="{Binding Resolutions_st}" SelectedIndex="{Binding SelectedRes}" FontWeight="Bold" FontSize="14" Canvas.Left="1014" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                  SelectedItem="{Binding CurrentDevice}" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" Canvas.Left="1154" Canvas.Top="99" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ComboBox Width="234" Height="34" x:Name="resolution" VerticalContentAlignment="Center" ItemsSource="{Binding Resolutions_st}" SelectedIndex="{Binding SelectedRes}" FontWeight="Bold" FontSize="14" Canvas.Left="1154" Canvas.Top="163" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Width="90"
             Height="34"
-            Content="רזולוציה" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1084" Canvas.Top="115" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial" />
+            Content="רזולוציה" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1224" Canvas.Top="129" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial" />
         <Label Width="118"
                Height="32"
-               Content="בחר מצלמה" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1072" Canvas.Top="51" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial" />
+               Content="בחר מצלמה" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1212" Canvas.Top="65" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial" />
         <Button Width="106"
                 Height="32"
                 Click="btnStart_Click"
-                Content="הפעל מצלמה" RenderTransformOrigin="0.497,0.552" Foreground="#FF001822" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1141" Canvas.Top="249" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" BorderBrush="{x:Null}" FontFamily="Arial" >
+                Content="הפעל מצלמה" RenderTransformOrigin="0.497,0.552" Foreground="#FF001822" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1281" Canvas.Top="263" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="{x:Null}" FontFamily="Arial" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -80,7 +80,7 @@
         <Button Width="106"
                 Height="32"
                 Click="btnStop_Click"
-                Content="כבה מצלמה" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1014" Canvas.Top="249" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
+                Content="כבה מצלמה" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1154" Canvas.Top="263" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -96,7 +96,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Rectangle Height="1" Canvas.Left="1014" Stroke="#FF004A66" Canvas.Top="238" Width="233" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
+        <Rectangle Height="1" Canvas.Left="1154" Stroke="#FF004A66" Canvas.Top="252" Width="233" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -106,16 +106,16 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Height="443" Canvas.Left="320" Canvas.Top="13" Width="639" Fill="#FF002938" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Rectangle Height="38" Canvas.Left="320" Canvas.Top="13" Width="639" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Center" VerticalAlignment="Center" RadiusX="7.373" RadiusY="7.373"/>
-        <Image x:Name="videoPlayer" Height="367" Width="587" Canvas.Left="355" Canvas.Top="68" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Content="מצלמה" Canvas.Left="882" Canvas.Top="15" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Rectangle Height="208" Canvas.Left="988" Canvas.Top="341" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Rectangle Height="443" Canvas.Left="460" Canvas.Top="27" Width="639" Fill="#FF002938" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Rectangle Height="38" Canvas.Left="460" Canvas.Top="27" Width="639" Fill="#FF004A66" RenderTransformOrigin="0.536,0.502" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Image x:Name="videoPlayer" Height="367" Width="587" Canvas.Left="495" Canvas.Top="82" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="מצלמה" Canvas.Left="1022" Canvas.Top="29" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Rectangle Height="219" Canvas.Left="1128" Canvas.Top="355" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <CheckBox x:Name="cbMotionDetection"
                   Width="135"
                   Height="18"
                   Content="הפעל גילוי תנועה"
-                  IsChecked="{Binding MotionDetectionEnabled}" Foreground="#FF36A0C8" RenderTransformOrigin="0.463,0.168" Canvas.Left="1047" Canvas.Top="367" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
+                  IsChecked="{Binding MotionDetectionEnabled}" Foreground="#FF36A0C8" RenderTransformOrigin="0.463,0.168" Canvas.Left="1187" Canvas.Top="381" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
             </CheckBox.LayoutTransform>
@@ -125,16 +125,16 @@
         Height="23"
         Minimum="1"
         Maximum="1000"
-        Value="{Binding MotionThreshold, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Canvas.Left="1026" Canvas.Top="456" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        Value="{Binding MotionThreshold, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Canvas.Left="1166" Canvas.Top="470" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <TextBox x:Name="thresholdTextBox"
          Width="116"
          Height="32"
          Text="{Binding MotionThreshold, Mode=TwoWay, StringFormat=\{0:F0\}, UpdateSourceTrigger=PropertyChanged}" 
          PreviewTextInput="thresholdTextBox_PreviewTextInput" 
-         LostFocus="thresholdTextBox_LostFocus" FontSize="18" Canvas.Left="1035" Canvas.Top="408" HorizontalAlignment="Center" VerticalAlignment="Top" />
+         LostFocus="thresholdTextBox_LostFocus" FontSize="18" Canvas.Left="1175" Canvas.Top="422" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Button Width="182"
             Height="35"
-            Click="btnSave_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="1040" Canvas.Top="501" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}" Content="שמירת סף רגישות" Foreground="#FF002938" FontFamily="Arial" >
+            Click="btnSave_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="1180" Canvas.Top="529" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="{x:Null}" Content="שמירת סף רגישות" Foreground="#FF002938" FontFamily="Arial" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -150,12 +150,12 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="סף רגישות :" Foreground="#FF36A0C8" FlowDirection="RightToLeft" FontSize="18" Canvas.Left="1155" Canvas.Top="407" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Rectangle Height="222" Canvas.Left="988" Canvas.Top="598" Width="285" Fill="#FF002938" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Label Content="סף רגישות :" Foreground="#FF36A0C8" FlowDirection="RightToLeft" FontSize="18" Canvas.Left="1295" Canvas.Top="421" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Rectangle Height="222" Canvas.Left="1128" Canvas.Top="612" Width="285" Fill="#FF002938" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
         <Button Width="105"
         Height="37"
         Content="נגן"
-        Click="btnPlaySound_Click" Canvas.Left="1129" Canvas.Top="716" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
+        Click="btnPlaySound_Click" Canvas.Left="1269" Canvas.Top="730" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF001822" FontFamily="Arial" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -174,7 +174,7 @@
         <Button Width="106"
         Height="37"
         Content="עצור"
-        Click="btnStopSound_Click" Canvas.Left="1128" Canvas.Top="764" Foreground="#FF001822" Background="#FF6EC7CC" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial">
+        Click="btnStopSound_Click" Canvas.Left="1268" Canvas.Top="778" Foreground="#FF001822" Background="#FF6EC7CC" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -190,15 +190,15 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="עוצמה" RenderTransformOrigin="0.486,0.592" Width="62" Canvas.Left="999" Canvas.Top="774" Foreground="#FF36A0C8" FontSize="16" FlowDirection="RightToLeft" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label Content="{Binding VolumePercentageWithSymbol}" Height="31" Width="62" Canvas.Left="1013" Canvas.Top="655" Foreground="#FF36A0C8" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
+        <Label Content="עוצמה" RenderTransformOrigin="0.486,0.592" Width="62" Canvas.Left="1139" Canvas.Top="788" Foreground="#FF36A0C8" FontSize="16" FlowDirection="RightToLeft" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label Content="{Binding VolumePercentageWithSymbol}" Height="31" Width="62" Canvas.Left="1153" Canvas.Top="669" Foreground="#FF36A0C8" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
         <Slider x:Name="volumeSlider"
         Width="96"
         Height="20"
         Minimum="0"
         Maximum="1"
         Value="{Binding Volume, Mode=TwoWay}"
-        Canvas.Left="987" Canvas.Top="719" RenderTransformOrigin="0.5,0.5"
+        Canvas.Left="1127" Canvas.Top="733" RenderTransformOrigin="0.5,0.5"
         HorizontalAlignment="Left" VerticalAlignment="Top"
         >
             <Slider.RenderTransform>
@@ -216,25 +216,25 @@
         Value="{Binding Position.TotalSeconds, ElementName=mediaPlayer, Mode=OneWay}"
         Width="200"
         Height="20"
-        Canvas.Left="1030"
-        Canvas.Top="624"
+        Canvas.Left="1170"
+        Canvas.Top="638"
         ValueChanged="audioSlider_ValueChanged" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Content="{Binding RemainingTimeFormatted}" Width="100" Height="30" Canvas.Left="1129" Canvas.Top="648" Foreground="#FF36A0C8" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="314" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Center" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="זיהוי תנועה" Canvas.Left="1166" Canvas.Top="318" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Rectangle Height="38" Canvas.Left="988" Canvas.Top="572" Width="285" Fill="#FF004A66" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-        <Label Content="נגן סאונד MRI" Canvas.Left="1141" Canvas.Top="577" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FlowDirection="RightToLeft" FontFamily="Arial"/>
-        <Rectangle Height="321" Canvas.Left="320" Canvas.Top="499" Width="639" Fill="#FF002938" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Rectangle Height="38" Canvas.Left="320" Canvas.Top="473" Width="639" Fill="#FF004A66" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label Content="הפעלת תוכנית" Canvas.Left="821" Canvas.Top="475" Foreground="#FFB9F8FF" FontSize="20" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
-        <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="734" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
-        <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="661" Canvas.Top="672" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
-        <CheckBox Content=" הפעל מיקרופון" IsChecked="{Binding IsMicrophoneEnabled, Mode=TwoWay}" Canvas.Left="784" Canvas.Top="622" Foreground="#FF36A0C8" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
+        <Label Content="{Binding RemainingTimeFormatted}" Width="100" Height="30" Canvas.Left="1269" Canvas.Top="662" Foreground="#FF36A0C8" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Height="38" Canvas.Left="1128" Canvas.Top="328" Width="285" Fill="#FF004A66" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Label Content="זיהוי תנועה" Canvas.Left="1306" Canvas.Top="332" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Rectangle Height="38" Canvas.Left="1128" Canvas.Top="586" Width="285" Fill="#FF004A66" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
+        <Label Content="נגן סאונד MRI" Canvas.Left="1281" Canvas.Top="591" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FlowDirection="RightToLeft" FontFamily="Arial"/>
+        <Rectangle Height="321" Canvas.Left="460" Canvas.Top="513" Width="639" Fill="#FF002938" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Height="38" Canvas.Left="460" Canvas.Top="487" Width="639" Fill="#FF004A66" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="הפעלת תוכנית" Canvas.Left="961" Canvas.Top="489" Foreground="#FFB9F8FF" FontSize="20" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="874" Canvas.Top="686" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="801" Canvas.Top="686" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <CheckBox Content=" הפעל מיקרופון" IsChecked="{Binding IsMicrophoneEnabled, Mode=TwoWay}" Canvas.Left="924" Canvas.Top="636" Foreground="#FF36A0C8" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <Button Content="הפעל" x:Name="Start_Program" Canvas.Left="834" Canvas.Top="544" Height="38" Width="106"  Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="StartProgram_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}"  >
+        <Button Content="הפעל" x:Name="Start_Program" Canvas.Left="974" Canvas.Top="558" Height="38" Width="106"  Foreground="#FF002938" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="StartProgram_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}"  >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -250,7 +250,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="הפסק" x:Name="Stop_Program" Canvas.Left="716" Canvas.Top="544" Height="38" Width="104" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="Stop_Program_Click" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="#FF002938">
+        <Button Content="הפסק" x:Name="Stop_Program" Canvas.Left="856" Canvas.Top="558" Height="38" Width="104" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Click="Stop_Program_Click" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF002938">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -266,13 +266,13 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="264" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="680" Canvas.Top="723" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
-        <Label Content="התראת תנועה" Canvas.Left="417" Canvas.Top="527" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"/>
-        <Image Height="76" Width="72" Source="/Images/Button_Icon_Red.svg.png" x:Name="pictureBox_Moving" Canvas.Left="441" Canvas.Top="587" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image Height="76" Width="73" Source="/Images/Button_Icon_Green.svg.png" x:Name="pictureBox_NotMoving" Canvas.Left="441" Canvas.Top="586" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="264" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="820" Canvas.Top="737" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label Content="התראת תנועה" Canvas.Left="557" Canvas.Top="541" Foreground="#FFB9F8FF" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Image Height="76" Width="72" Source="/Images/Button_Icon_Red.svg.png" x:Name="pictureBox_Moving" Canvas.Left="581" Canvas.Top="601" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Height="76" Width="73" Source="/Images/Button_Icon_Green.svg.png" x:Name="pictureBox_NotMoving" Canvas.Left="581" Canvas.Top="600" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="272" Canvas.Left="10" Width="245" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="609" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Content="סימולטור MRI" HorizontalAlignment="Center" VerticalAlignment="Top" Width="266" FontSize="32" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FF2C9FC8" Canvas.Top="622" FontFamily="Arial"/>
-        <Rectangle Height="1" Canvas.Left="716" Stroke="#FF004A66" Canvas.Top="663" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Rectangle Height="1" Canvas.Left="856" Stroke="#FF004A66" Canvas.Top="677" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -282,7 +282,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Height="1" Canvas.Left="716" Stroke="#FF004A66" Canvas.Top="605" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Rectangle Height="1" Canvas.Left="856" Stroke="#FF004A66" Canvas.Top="619" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -292,7 +292,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Height="1" Canvas.Left="714" Stroke="#FF004A66" Canvas.Top="715" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Rectangle Height="1" Canvas.Left="854" Stroke="#FF004A66" Canvas.Top="729" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -302,7 +302,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Height="1" Canvas.Left="366" Stroke="#FF004A66" Canvas.Top="566" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Rectangle Height="1" Canvas.Left="506" Stroke="#FF004A66" Canvas.Top="580" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -312,7 +312,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Height="1" Canvas.Left="1012" Stroke="#FF004A66" Canvas.Top="489" Width="234" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Rectangle Height="1" Canvas.Left="1152" Stroke="#FF004A66" Canvas.Top="519" Width="234" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -325,7 +325,7 @@
         <Button Width="152"
             Height="32"
             Click="btnSaveCamera_Click"
-            Content=" הגדר כברירת מחדל" RenderTransformOrigin="0.497,0.552" Foreground="#FF001822" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1055" Canvas.Top="195" FontWeight="Bold" BorderBrush="{x:Null}" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Top" >
+            Content=" הגדר כברירת מחדל" RenderTransformOrigin="0.497,0.552" Foreground="#FF001822" Background="#FF6EC7CC" FontSize="16" Canvas.Left="1195" Canvas.Top="209" FontWeight="Bold" BorderBrush="{x:Null}" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -341,8 +341,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="סף זמן תנועה :" x:Name="labelShiftDuration_val" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="734" Canvas.Top="768" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Rectangle Height="1" Canvas.Left="714" Stroke="#FF004A66" Canvas.Top="758" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Label Content="סף זמן תנועה :" x:Name="labelShiftDuration_val" Height="36" Width="210" Foreground="#FF36A0C8" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="874" Canvas.Top="782" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Height="1" Canvas.Left="854" Stroke="#FF004A66" Canvas.Top="772" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>
@@ -355,7 +355,7 @@
 
         <Button Width="117"
             Height="36"
-            Click="btnSaveTime_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="561" Canvas.Top="768" BorderBrush="{x:Null}" Content="שמירה" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            Click="btnSaveTime_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold" Canvas.Left="701" Canvas.Top="782" BorderBrush="{x:Null}" Content="שמירה" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Top" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border"
@@ -375,8 +375,8 @@
          LostFocus="thresholdMotionTime_TextBox_LostFocus"
          Name="thresholdMotionTime_TextBox"
          Text="{Binding ThresholdMotionTime, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-         Canvas.Left="698" TextWrapping="Wrap" Canvas.Top="769" Width="105"
-         HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" FontSize="18"/>
+         Canvas.Left="838" TextWrapping="Wrap" Canvas.Top="783" Width="105"
+         HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" FontSize="18"/>
         <Button Width="117"
             Height="36"
             Click="btnAbout_Click" RenderTransformOrigin="0.5,0.5" Background="#FF6EC7CC" FontSize="18" FontWeight="Bold"  BorderBrush="{x:Null}" Content="אודות" Foreground="#FF002938" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="116" Canvas.Top="563" >
@@ -395,6 +395,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Label Content="רגיש יותר" Foreground="#FF36A0C8" FlowDirection="RightToLeft" FontSize="18" Canvas.Left="1137" Canvas.Top="487" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="רגיש פחות" Foreground="#FF36A0C8" FlowDirection="RightToLeft" FontSize="18" Canvas.Left="1322" Canvas.Top="487" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 
 
