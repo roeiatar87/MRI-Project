@@ -45,6 +45,9 @@ namespace WpfPostItDetector
             mediaPlayer.MediaOpened += MediaPlayer_MediaOpened;
             mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
             microphoneListener = new MicrophoneListener();
+
+            WindowState = WindowState.Normal;
+            WindowState = WindowState.Maximized;
         }
         private MicrophoneListener microphoneListener;
         private DispatcherTimer sliderTimer;
