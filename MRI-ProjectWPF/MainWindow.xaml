@@ -7,7 +7,7 @@
         Title="MainWindow"
         Width="1808"
         Height="1004"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF131725" Closing ="Window_Closing" ResizeMode="NoResize" WindowStyle="None">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FF131725" Closing ="Window_Closing" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -103,7 +103,7 @@
                 </Rectangle.RenderTransform>
             </Rectangle>
             <Rectangle Height="474" Canvas.Left="438" Canvas.Top="46" Width="932" Fill="#FF1D2335" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="7.373" RadiusY="7.373"/>
-            <Image x:Name="videoPlayer" Height="399" Width="655" Canvas.Left="509" Canvas.Top="88" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Image x:Name="videoPlayer" Height="400" Width="655" Canvas.Left="553" Canvas.Top="108" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <Label Content="מצלמה" Canvas.Left="1266" Canvas.Top="46" Foreground="#FFB9BDCA" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.468,1.045" FontWeight="Bold"/>
             <Rectangle Height="277" Canvas.Left="1402" Canvas.Top="381" Width="330" Fill="#FF1D2335" HorizontalAlignment="Left" VerticalAlignment="Center" RadiusX="7.373" RadiusY="7.373"/>
             <CheckBox x:Name="cbMotionDetection"
@@ -252,7 +252,7 @@
             <Rectangle Height="405" Canvas.Left="438" Canvas.Top="541" Width="932" Fill="#FF1D2335" RadiusX="7.373" RadiusY="7.373" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Label Content="הפעלת תוכנית" Canvas.Left="1183" Canvas.Top="546" Foreground="#FFB9BDCA" FontSize="24" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
             <Label Content="כמות תנועות :" x:Name="labelShiftDuration_Copy" Height="36" Width="210" Foreground="#FFB9BDCA" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="1130" Canvas.Top="757" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FFB9BDCA" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1056" Canvas.Top="749" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Arial"/>
+            <Label  Content="{Binding MotionNumber}" Height="38" Width="148" Foreground="#FFB9BDCA" FontSize="20" FlowDirection="RightToLeft" Canvas.Left="1058" Canvas.Top="759" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial"/>
             <CheckBox Content=" הפעל מיקרופון" IsChecked="{Binding IsMicrophoneEnabled, Mode=TwoWay}" Canvas.Left="1180" Canvas.Top="703" Foreground="#FFB9BDCA" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
@@ -291,9 +291,9 @@
                 </Button.Template>
             </Button>
             <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="264" Foreground="#FFB9BDCA" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="1076" Canvas.Top="810" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Content="התראת תנועה" Canvas.Left="553" Canvas.Top="613" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Height="112" Width="112" Source="/Images/led-on-md.png" x:Name="pictureBox_Moving" Canvas.Left="565" Canvas.Top="688" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Image Height="112" Width="112" Source="/Images/led-green-md.png" x:Name="pictureBox_NotMoving" Canvas.Left="565" Canvas.Top="688" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label Content="התראת תנועה" Canvas.Left="724" Canvas.Top="604" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image Height="112" Width="112" Source="/Images/led-on-md.png" x:Name="pictureBox_Moving" Canvas.Left="736" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Height="112" Width="112" Source="/Images/led-green-md.png" x:Name="pictureBox_NotMoving" Canvas.Left="736" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Image Height="272" Canvas.Left="79" Width="245" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="629" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Label Content="סימולטור MRI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="266" FontSize="32" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FFB9BDCA" Canvas.Top="642" FontFamily="Arial" Canvas.Left="69"/>
             <Rectangle Height="1" Canvas.Left="1112" Stroke="#FF3E4148" Canvas.Top="747" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -326,7 +326,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle Height="1" Canvas.Left="509" Stroke="#FF3E4148" Canvas.Top="657" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Rectangle Height="1" Canvas.Left="680" Stroke="#FF3E4148" Canvas.Top="649" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -580,6 +580,42 @@
 
             </Rectangle>
             <Label Content="זיהוי תנועה" Canvas.Left="1591" Canvas.Top="380" Foreground="#FFB9BDCA" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <CheckBox Content="השתק" IsChecked="{Binding AlarmMute, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Canvas.Left="751" Canvas.Top="884" Foreground="#FFB9BDCA" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <Label Content="צליל התראה" Canvas.Left="610" Canvas.Top="830" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FlowDirection="RightToLeft" RenderTransformOrigin="0.523,0.519"/>
+            <Rectangle Height="2" Canvas.Left="492" Stroke="#FF3E4148" Canvas.Top="870" Width="356" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Label Content="עוצמה" RenderTransformOrigin="0.486,0.592" Width="62" Canvas.Left="657" Canvas.Top="880" Foreground="#FFB9BDCA" FontSize="16" FlowDirection="RightToLeft" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Content="{Binding VolumePercentageWithSymbolBip}" Height="31" Width="62" Canvas.Left="491" Canvas.Top="880" Foreground="#FFB9BDCA" FontSize="16" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Slider x:Name="volumeSlider_Copy"
+                Width="96"
+                Height="20"
+                Minimum="0"
+                Maximum="1"
+                Value="{Binding VolumeBip, Mode=TwoWay}"
+                Canvas.Left="553" Canvas.Top="886" RenderTransformOrigin="0.5,0.5"
+        HorizontalAlignment="Center" VerticalAlignment="Top"
+        >
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
 
         </Canvas>
     </Grid>

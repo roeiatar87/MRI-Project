@@ -42,17 +42,18 @@ namespace WpfPostItDetector
             pictureBox_NotMoving.Visibility = Visibility.Hidden;
             pictureBox_Moving.Visibility = Visibility.Hidden;
             mediaPlayer = new MediaPlayer();
+            mediaPlayer_bip = new MediaPlayer();
             mediaPlayer.MediaOpened += MediaPlayer_MediaOpened;
             mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
             microphoneListener = new MicrophoneListener();
+            AlarmMute = true;
 
-            WindowState = WindowState.Normal;
-            WindowState = WindowState.Maximized;
+
         }
         private MicrophoneListener microphoneListener;
         private DispatcherTimer sliderTimer;
         private MediaPlayer mediaPlayer;
-
+        private MediaPlayer mediaPlayer_bip;
 
         public ObservableCollection<FilterInfo> VideoDevices { get; } = new ObservableCollection<FilterInfo>();
         public ObservableCollection<VideoCapabilities> Resolutions { get; } = new ObservableCollection<VideoCapabilities>();
@@ -160,6 +161,18 @@ namespace WpfPostItDetector
                 VolumePercentage = (int)(value * 100);
             }
         }
+        public double VolumeBip
+        {
+            get { return _volumeBip; }
+            set
+            {
+                _volumeBip = value;
+                OnPropertyChanged(nameof(VolumeBip));
+                if (mediaPlayer_bip != null)
+                    mediaPlayer_bip.Volume = value;
+                VolumePercentageBip = (int)(value * 100);
+            }
+        }
         public int SelectedRes
         {
             get => _selectedRes;
@@ -170,6 +183,19 @@ namespace WpfPostItDetector
                 OnPropertyChanged(nameof(SelectedRes));
             }
         }
+        public bool AlarmMute
+        {
+            get { return _AlarmMute; }
+            set
+            {
+                _AlarmMute = value;
+                OnPropertyChanged(nameof(AlarmMute));
+                if (mediaPlayer_bip != null)
+                    mediaPlayer_bip.IsMuted = value;
+                //VolumePercentage = (int)(value * 100);
+            }
+        }
+        private bool _AlarmMute;
         private int _volumePercentage = 90;
         public int VolumePercentage
         {
@@ -180,7 +206,18 @@ namespace WpfPostItDetector
                 OnPropertyChanged(nameof(VolumePercentage));
             }
         }
+        private int _volumePercentageBip = 90;
+        public int VolumePercentageBip
+        {
+            get { return _volumePercentageBip; }
+            set
+            {
+                _volumePercentageBip = value;
+                OnPropertyChanged(nameof(VolumePercentageBip));
+            }
+        }
         private double _volume = 0.9; // Default volume
+        private double _volumeBip = 0.9; // Default volume
         private DateTime _shiftStartTime;
         private readonly MotionDetector _motionDetector;
         private IVideoSource _videoSource;
@@ -231,6 +268,39 @@ namespace WpfPostItDetector
 
                     // Play the audio
                     mediaPlayer.Play();
+
+                }
+                else
+                {
+                    MessageBox.Show("The sound file does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error playing sound: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void PlayBipSound()
+        {
+            try
+            {
+                // Get the base directory of the application
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                // Combine the base directory with the relative path to the sound file
+                string audioFilePath = Path.Combine(baseDirectory, "CheersTone.mp3");
+
+                if (File.Exists(audioFilePath))
+                {
+                    // Set the media player's media source to the audio file path
+                    mediaPlayer_bip.Open(new Uri(audioFilePath));
+
+                    //// Set the position of the media player based on the slider value
+                    //mediaPlayer.Position = TimeSpan.FromSeconds(audioSlider.Value);
+
+                    // Play the audio
+                    mediaPlayer_bip.Play();
 
                 }
                 else
@@ -320,6 +390,7 @@ namespace WpfPostItDetector
                                     {
                                         MotionNumber++;
                                         _isInMotion = true;
+                                        PlayBipSound();
                                     }
                                 }
                             }
@@ -527,10 +598,18 @@ namespace WpfPostItDetector
             {
                 OnPropertyChanged(nameof(VolumePercentageWithSymbol));
             }
+            if (propertyName == nameof(VolumePercentageBip))
+            {
+                OnPropertyChanged(nameof(VolumePercentageWithSymbolBip));
+            }
         }
         public string VolumePercentageWithSymbol
         {
             get { return $"{VolumePercentage}%"; }
+        }
+        public string VolumePercentageWithSymbolBip
+        {
+            get { return $"{VolumePercentageBip}%"; }
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -666,6 +745,12 @@ namespace WpfPostItDetector
 
             MessageBox.Show("© התוכנה פותחה ועוצבה על ידי רועי עטר, כל הזכויות שמורות.\n", "אודות");
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            WindowState = WindowState.Maximized;
         }
     }
 }
