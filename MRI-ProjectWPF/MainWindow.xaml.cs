@@ -52,7 +52,7 @@ namespace WpfPostItDetector
             Start_Program.IsEnabled = true;
             Stop_Program.IsEnabled = false;
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100); // Update every second
+            timer.Interval = TimeSpan.FromMilliseconds(500); // Update every second
             timer.Tick += Timer_Tick;
 
 
