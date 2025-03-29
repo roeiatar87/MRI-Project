@@ -231,6 +231,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9F6B1F884DF7771F2BE394AAA3A31133"
+        "OwnerKey" = "8:_2AE464D1330041D6AA7910DF22F0BF82"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A3430607DFBCC391ED52EBCEA9D9C9DC"
         "OwnerKey" = "8:_5013DC65A45DE17397980383686FB237"
         "MsmSig" = "8:_UNDEFINED"
@@ -257,6 +263,12 @@
         {
         "MsmKey" = "8:_ABEBCBD080EF1727300B3F067ECAD052"
         "OwnerKey" = "8:_C519BE85B281846C642918220C8A047C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BBCBF04DB1724A028C3BC3B17E7EB1F6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -316,13 +328,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_29C1B7E97C7349F15B20CC2C747485FF"
+        "OwnerKey" = "8:_2AE464D1330041D6AA7910DF22F0BF82"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2AE464D1330041D6AA7910DF22F0BF82"
+        "OwnerKey" = "8:_9F6B1F884DF7771F2BE394AAA3A31133"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -421,6 +433,12 @@
         "OwnerKey" = "8:_959DF5DB748CD7B5C75568256CA2E9EF"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_29C1B7E97C7349F15B20CC2C747485FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -439,6 +457,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -455,6 +481,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -958,6 +1000,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9F6B1F884DF7771F2BE394AAA3A31133"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Wpf.Ui, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9F6B1F884DF7771F2BE394AAA3A31133"
+                    {
+                    "Name" = "8:Wpf.Ui.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Wpf.Ui.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9E0C27FA0C184E51A4FA8123FF64C54A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A3430607DFBCC391ED52EBCEA9D9C9DC"
             {
             "AssemblyRegister" = "3:1"
@@ -1049,6 +1122,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BBCBF04DB1724A028C3BC3B17E7EB1F6"
+            {
+            "SourcePath" = "8:..\\MRI-ProjectWPF\\CheersTone.mp3"
+            "TargetName" = "8:CheersTone.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_9E0C27FA0C184E51A4FA8123FF64C54A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C519BE85B281846C642918220C8A047C"
@@ -1283,7 +1376,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MRI_Setup"
         "ProductCode" = "8:{828F0E6D-EA64-4A68-8E73-537E982B74F1}"
-        "PackageCode" = "8:{DB9B44E7-8490-4CA9-BAD0-AEFD37380BCD}"
+        "PackageCode" = "8:{41602ED4-A2B3-475A-8A2F-48E6F3EE5207}"
         "UpgradeCode" = "8:{56F270FB-D2AC-4AD7-8B1C-74D42B152099}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

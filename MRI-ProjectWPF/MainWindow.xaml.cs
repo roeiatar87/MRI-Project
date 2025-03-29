@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Media;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -47,6 +49,12 @@ namespace WpfPostItDetector
             mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
             microphoneListener = new MicrophoneListener();
             AlarmMute = true;
+            Start_Program.IsEnabled = true;
+            Stop_Program.IsEnabled = false;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100); // Update every second
+            timer.Tick += Timer_Tick;
+
 
 
         }
@@ -54,6 +62,8 @@ namespace WpfPostItDetector
         private DispatcherTimer sliderTimer;
         private MediaPlayer mediaPlayer;
         private MediaPlayer mediaPlayer_bip;
+        private DispatcherTimer timer; // Timer to update time
+        private DateTime startTime; // Store the start time
 
         public ObservableCollection<FilterInfo> VideoDevices { get; } = new ObservableCollection<FilterInfo>();
         public ObservableCollection<VideoCapabilities> Resolutions { get; } = new ObservableCollection<VideoCapabilities>();
@@ -149,6 +159,25 @@ namespace WpfPostItDetector
         {
             get { return RemainingTime.ToString(@"hh\:mm\:ss"); } // Format remaining time as "hh:mm:ss"
         }
+
+        private TimeSpan _elapsedTime;
+        public TimeSpan elapsedTime
+        {
+            get { return _elapsedTime; }
+            set
+            {
+                _elapsedTime = value;
+                OnPropertyChanged(nameof(elapsedTime));
+                OnPropertyChanged(nameof(elapsedTimeTimeFormatted)); // Notify UI of the formatted time change
+            }
+        }
+
+        public string elapsedTimeTimeFormatted
+        {
+            get { return elapsedTime.ToString(@"hh\:mm\:ss"); } // Format remaining time as "hh:mm:ss"
+        }
+
+
         public double Volume
         {
             get { return _volume; }
@@ -628,10 +657,16 @@ namespace WpfPostItDetector
         {
             try
             {
+
+                Start_Program.IsEnabled = false;
+                Stop_Program.IsEnabled = true;
                 btnStart_Click(sender, e);
                 btnPlaySound_Click(sender, e);
                 MotionDetectionEnabled = true;
                 MotionNumber = 0;
+                startTime = DateTime.Now; // Capture start time
+                elapsedTime = TimeSpan.Zero; // Reset elapsed time
+                timer.Start();
             }
             catch (Exception ex)
             {
@@ -645,11 +680,15 @@ namespace WpfPostItDetector
         {
             try
             {
+
+                Start_Program.IsEnabled = true;
+                Stop_Program.IsEnabled = false;
                 btnStop_Click(sender, e);
                 btnStopSound_Click(sender, e);
                 MotionDetectionEnabled = false;
                 pictureBox_NotMoving.Visibility = Visibility.Hidden;
                 pictureBox_Moving.Visibility = Visibility.Hidden;
+                timer.Stop();
             }
             catch (Exception ex)
             {
@@ -662,6 +701,7 @@ namespace WpfPostItDetector
         private async void Window_Closing(object sender, CancelEventArgs e)
         {
             await StopCameraAsync();
+            timer.Stop();
         }
 
         private void btnSaveCamera_Click(object sender, RoutedEventArgs e)
@@ -751,6 +791,12 @@ namespace WpfPostItDetector
         {
             WindowState = WindowState.Normal;
             WindowState = WindowState.Maximized;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime = DateTime.Now - startTime; // Calculate elapsed time
+
         }
     }
 }

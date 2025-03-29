@@ -291,9 +291,9 @@
                 </Button.Template>
             </Button>
             <Label Content="זמן תנועה :" x:Name="labelShiftDuration" Height="36" Width="264" Foreground="#FFB9BDCA" FontSize="18" FlowDirection="RightToLeft" Canvas.Left="1076" Canvas.Top="810" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Content="התראת תנועה" Canvas.Left="724" Canvas.Top="604" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Image Height="112" Width="112" Source="/Images/led-on-md.png" x:Name="pictureBox_Moving" Canvas.Left="736" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Image Height="112" Width="112" Source="/Images/led-green-md.png" x:Name="pictureBox_NotMoving" Canvas.Left="736" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label Content="התראת תנועה" Canvas.Left="538" Canvas.Top="604" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Image Height="112" Width="112" Source="/Images/led-on-md.png" x:Name="pictureBox_Moving" Canvas.Left="550" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Image Height="112" Width="112" Source="/Images/led-green-md.png" x:Name="pictureBox_NotMoving" Canvas.Left="550" Canvas.Top="670" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Image Height="272" Canvas.Left="79" Width="245" Source="/Images/5431964.png" Stretch="UniformToFill" Canvas.Top="629" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Label Content="סימולטור MRI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="266" FontSize="32" FontWeight="Bold" FlowDirection="RightToLeft" Foreground="#FFB9BDCA" Canvas.Top="642" FontFamily="Arial" Canvas.Left="69"/>
             <Rectangle Height="1" Canvas.Left="1112" Stroke="#FF3E4148" Canvas.Top="747" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -326,7 +326,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle Height="1" Canvas.Left="680" Stroke="#FF3E4148" Canvas.Top="649" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Rectangle Height="1" Canvas.Left="494" Stroke="#FF3E4148" Canvas.Top="649" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -616,6 +616,18 @@
                     </TransformGroup>
                 </Slider.RenderTransform>
             </Slider>
+            <Label Content="זמן מדידה" Canvas.Left="873" Canvas.Top="604" Foreground="#FFB9BDCA" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Rectangle Height="1" Canvas.Left="807" Stroke="#FF3E4148" Canvas.Top="649" Width="224" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Label  Content="{Binding elapsedTimeTimeFormatted,UpdateSourceTrigger=PropertyChanged}" Height="38" Width="148" Foreground="#FFB9BDCA" FontSize="24" FlowDirection="RightToLeft" Canvas.Left="830" Canvas.Top="670" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         </Canvas>
     </Grid>
